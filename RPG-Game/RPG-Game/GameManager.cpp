@@ -37,18 +37,9 @@ void GameManager::startGame()
 		cin >> name; 
 		
 		listOfPlayers.push_back(factory.createObject(type, name));
-
-		
 		cout << endl; 
 	}
-	
-
-
-	for (auto pl : listOfPlayers)
-	{
-		cout << pl->gethp() << endl; 
-	}
-	
+	run(); 
 }
 
 
@@ -66,6 +57,9 @@ RPG_role GameManager::pickRPG(int id)
 
 void GameManager::run()
 {
+	cout << "GAME HAS NOW STARTED!!!!" << endl; 
+	
+	listOfPlayers.at(0)->attack(listOfPlayers.at(1)->m_hitpoints, *listOfPlayers.at(1)); 
 
 }
 

@@ -1,9 +1,11 @@
 ﻿#pragma once
+#include "PlayerCharacter.h"
 
 class PlayerCharacterView
 {
 public:
-	void promptaction();
-	void printStatus(); 
+	~PlayerCharacterView(); 
+	void promptaction(PlayerCharacter & player);
+	void printStatus(PlayerCharacter & player); 
 
 };

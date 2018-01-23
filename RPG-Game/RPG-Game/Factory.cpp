@@ -6,13 +6,13 @@
 {
 	switch (role)
 	{
-	case Wizard: {  shared_ptr<PlayerCharacter> Wizard(new PlayerCharacter(100, 50, name));
-		return Wizard; 
+	case Wizard: {  shared_ptr<PlayerCharacter> wizard(new PlayerCharacter(100, 50, name, Wizard));
+		return wizard; 
 	}
 		
     
-	case Assasin: { shared_ptr<PlayerCharacter> Assasin(new PlayerCharacter(100, 75, name));
-		return  Assasin;
+	case Assasin: { shared_ptr<PlayerCharacter> assasin(new PlayerCharacter(100, 75, name, Assasin));
+		return  assasin;
 	}
 
 	}
