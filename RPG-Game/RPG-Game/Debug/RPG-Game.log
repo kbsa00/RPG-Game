@@ -1,0 +1,3 @@
+﻿  GameManager.cpp
+c:\users\eier\desktop\c++\rpg-game\rpg-game\gamemanager.cpp(65): warning C4715: 'GameManager::pickRPG': not all control paths return a value
+  RPG-Game.vcxproj -> C:\Users\Eier\Desktop\C++\RPG-Game\Debug\RPG-Game.exe
