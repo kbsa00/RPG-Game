@@ -27,12 +27,12 @@ void PlayerCharacter::attack(int &enemy_hp, PlayerCharacter & object){
 		
 		enemy_hp -= 25;
 		object.m_attacks -= 25; 
-		pcw.promptaction(object); 
+		pcw.promptaction(object, enemy_hp); 
 		break;
 	
 	case Assasin: enemy_hp -= 50;
 		object.m_attacks -= 25;
-		pcw.promptaction(object);
+		pcw.promptaction(object, enemy_hp);
 		break;
 
 

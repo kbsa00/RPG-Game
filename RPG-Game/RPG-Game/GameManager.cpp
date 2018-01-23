@@ -30,7 +30,8 @@ void GameManager::startGame()
 
 	
 	for (int i = 0; i < num; i++){
-		cout << "Player Classes:/n1 - Wizard/n2 - Assasin" << endl; 
+		cout << "Player Classes:\n1 - Wizard\n2 - Assasin" << endl; 
+		cout << "Pick your player";
 		cin >> idRPG; 
 		RPG_role type = pickRPG(idRPG); 
 		cout << "Name of the player: " << i + 1 << " "; 
@@ -59,6 +60,11 @@ void GameManager::run()
 {
 	cout << "GAME HAS NOW STARTED!!!!" << endl; 
 	
+	/**
+	 * TODO TRY TO CHECK IF HP IS DOWN, FIND A WAY TO USE ATTACK METHOD IN A GOOD WAY, ALSO START ON DODGE
+	 * TODO ALSO go through VIEW CLASS
+	 * 
+	 */
 	listOfPlayers.at(0)->attack(listOfPlayers.at(1)->m_hitpoints, *listOfPlayers.at(1)); 
 
 }
