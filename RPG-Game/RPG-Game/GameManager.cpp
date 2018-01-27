@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include <memory>
 #include "Factory.h"
+#include "PlayerCharacterView.h"
 
 
 GameManager * GameManager::_instance = 0; 
@@ -18,15 +19,18 @@ void GameManager::startGame()
 	int num = 0;
 	string name;
 	int idRPG;
-	vector<string> nameList; 
+	vector<string> nameList;
 
 
-	cout << "Enter number of players: ";
-	cin >> num;
-	cout << endl; 
-	cout << "Initializing " << num << " players" << endl; 
-	
-	cout << "<------------------------->" << endl; 
+	while (num < 2)
+	{
+		cout << "Please enter atleast two players or more.." << endl;
+		cout << "Enter number of players: ";
+		cin >> num;
+		cout << endl;
+		cout << "Initializing " << num << " players" << endl;
+		cout << "<------------------------->" << endl;
+	}
 
 	
 	for (int i = 0; i < num; i++){
@@ -40,6 +44,8 @@ void GameManager::startGame()
 		listOfPlayers.push_back(factory.createObject(type, name));
 		cout << endl; 
 	}
+
+	cout << "GAME HAS NOW STARTED!!!!" << endl;
 	run(); 
 }
 
@@ -58,15 +64,57 @@ RPG_role GameManager::pickRPG(int id)
 
 void GameManager::run()
 {
-	cout << "GAME HAS NOW STARTED!!!!" << endl; 
-	
-	/**
-	 * TODO TRY TO CHECK IF HP IS DOWN, FIND A WAY TO USE ATTACK METHOD IN A GOOD WAY, ALSO START ON DODGE
-	 * TODO ALSO go through VIEW CLASS
-	 * 
-	 */
-	listOfPlayers.at(0)->attack(listOfPlayers.at(1)->m_hitpoints, *listOfPlayers.at(1)); 
+	PlayerCharacterView pcw; 
 
+	int roundcounter = 1;
+	int attackChoice; 
+
+	for (auto players : listOfPlayers)
+	{
+		cout << players->getName() << " is now ready for the war!\n" << endl; 
+	}
+
+	
+
+	while (true)
+	{
+		int decision = 0; 
+		cout << "Round " << roundcounter << " - " << "player stats" << endl; 
+
+		for (auto player : listOfPlayers)
+		{
+			pcw.printStatus(*player);
+
+		}
+		
+	
+		for (auto player : listOfPlayers)
+		{
+			cout << player->getName() << " Pick your Action" << endl; 
+			cout << "Actions:\n1 - Attack\n2 - Dodge" << endl; 
+			cin >> decision; 
+			player->setDecision(decision); 	
+		}
+
+		for (auto player : listOfPlayers)
+		{
+			cout << player->getName() << " - Pick your target" << endl; 
+			pickEnemy(*player);
+			cout << "Write your targets number: "; 
+			cin >> attackChoice; 
+			player->setPickedAttacker(attackChoice); 
+		}
+		
+		for (auto player : listOfPlayers)
+		{
+			perfomeAction(*player);
+		}
+
+		roundcounter++; 
+		break;
+	}
+
+	
 }
 
 GameManager* GameManager::getInstance()
@@ -75,9 +123,42 @@ GameManager* GameManager::getInstance()
 	{
 		_instance = new GameManager(); 
 	}
-
+	
 	return _instance; 
 }
+
+void GameManager::pickEnemy(PlayerCharacter & player)
+{
+	int index = 0; 
+	for (auto players : listOfPlayers)
+	{
+		if (player.getName() != players->getName())
+		{
+			cout << index+1 << " - " << players->getName() << endl; 
+			index++;
+		}
+	}
+}
+
+void GameManager::perfomeAction(PlayerCharacter& player)
+{
+	switch (player.getDecision())
+	{
+	case 1: player.attack(listOfPlayers[player.getPickedAttacker()]->m_hitpoints, player); 
+		break;
+
+	case 2: player.dodge(); 
+		break;
+
+
+	}
+
+}
+
+
+
+
+
 
 
 

@@ -16,7 +16,8 @@ public:
 	RPG_role pickRPG(int id);
 	void run();
 	GameManager * getInstance();
-
+	void pickEnemy(PlayerCharacter & player);
+	void perfomeAction(PlayerCharacter& player); 
 private:
 	vector<shared_ptr<PlayerCharacter>> listOfPlayers; 
 

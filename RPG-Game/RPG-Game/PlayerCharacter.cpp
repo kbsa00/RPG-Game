@@ -20,7 +20,8 @@ void PlayerCharacter::dodge()
 }
 
 void PlayerCharacter::attack(int &enemy_hp, PlayerCharacter & object){
-	PlayerCharacterView pcw; 
+	PlayerCharacterView pcw;
+	
 	switch (object.getType())
 	{
 	case Wizard: 
@@ -34,11 +35,9 @@ void PlayerCharacter::attack(int &enemy_hp, PlayerCharacter & object){
 		object.m_attacks -= 25;
 		pcw.promptaction(object, enemy_hp);
 		break;
-
-
 	}
-
 }
+
 
 int PlayerCharacter::getAttacks()
 {
@@ -58,5 +57,25 @@ RPG_role PlayerCharacter::getType()
 string PlayerCharacter::getName()
 {
 	return m_name; 
+}
+
+void PlayerCharacter::setDecision(int decision)
+{
+	m_decision = decision;
+}
+
+int PlayerCharacter::getDecision()
+{
+	return m_decision; 
+}
+
+int PlayerCharacter::getPickedAttacker()
+{
+	return m_pickAttacker; 
+}
+
+void PlayerCharacter::setPickedAttacker(int pickAttacker)
+{
+	m_pickAttacker = pickAttacker; 
 }
 

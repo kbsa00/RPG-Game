@@ -12,18 +12,18 @@ void PlayerCharacterView::promptaction(PlayerCharacter & player, int & enemy)
 	{
 	case Wizard: 
 		cout << player.getName() << " attacked for 25 Damage" << endl; 
-		printStatus(player, enemy);
+		
 		break;
 
 	case Assasin: 
 		cout << player.getName() << " attacked for 50 Damage" << endl;
-		printStatus(player, enemy);
+
 	}
 }
 
-void PlayerCharacterView::printStatus(PlayerCharacter & player, int & enemy_hp)
+void PlayerCharacterView::printStatus(PlayerCharacter & player)
 {
 	cout << player.getName() << " has now " << player.getAttacks() << "/" << player.gethp() << endl; 
-	cout << "ENEMYS HP: " << enemy_hp << endl;
+	
 
 }
