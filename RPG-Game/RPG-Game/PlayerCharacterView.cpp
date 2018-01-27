@@ -6,12 +6,12 @@ PlayerCharacterView::~PlayerCharacterView()
 {
 }
 
-void PlayerCharacterView::promptaction(PlayerCharacter & player, int & enemy)
+void PlayerCharacterView::promptaction(PlayerCharacter & player)
 {
 	switch (player.getType())
 	{
 	case Wizard: 
-		cout << player.getName() << " attacked for 25 Damage" << endl; 
+		cout << player.getName() << " attacked  for 25 Damage" << endl; 
 		
 		break;
 

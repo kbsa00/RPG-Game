@@ -71,7 +71,7 @@ void GameManager::run()
 
 	for (auto players : listOfPlayers)
 	{
-		cout << players->getName() << " is now ready for the war!\n" << endl; 
+		cout << players->getName() << " is now ready for the war!" << endl; 
 	}
 
 	
@@ -79,7 +79,7 @@ void GameManager::run()
 	while (true)
 	{
 		int decision = 0; 
-		cout << "Round " << roundcounter << " - " << "player stats" << endl; 
+		cout << "\nRound " << roundcounter << " - " << "player stats" << endl; 
 
 		for (auto player : listOfPlayers)
 		{
@@ -109,7 +109,11 @@ void GameManager::run()
 		{
 			perfomeAction(*player);
 		}
+		for (auto player : listOfPlayers)
+		{
+			pcw.printStatus(*player);
 
+		}
 		roundcounter++; 
 		break;
 	}
@@ -134,9 +138,9 @@ void GameManager::pickEnemy(PlayerCharacter & player)
 	{
 		if (player.getName() != players->getName())
 		{
-			cout << index+1 << " - " << players->getName() << endl; 
-			index++;
+			cout << index << " - " << players->getName() << endl; 
 		}
+		index++;
 	}
 }
 
@@ -154,12 +158,4 @@ void GameManager::perfomeAction(PlayerCharacter& player)
 	}
 
 }
-
-
-
-
-
-
-
-
 
