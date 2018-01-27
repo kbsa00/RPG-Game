@@ -44,7 +44,7 @@ int PlayerCharacter::getAttacks()
 	return m_attacks;
 }
 
-int PlayerCharacter::gethp()
+ int PlayerCharacter::gethp()
 {
 	return m_hitpoints; 
 }

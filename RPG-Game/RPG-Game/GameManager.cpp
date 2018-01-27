@@ -75,7 +75,6 @@ void GameManager::run()
 	}
 
 	
-
 	while (true)
 	{
 		int decision = 0; 
@@ -109,16 +108,21 @@ void GameManager::run()
 		{
 			perfomeAction(*player);
 		}
+		
 		for (auto player : listOfPlayers)
 		{
 			pcw.printStatus(*player);
 
 		}
+
+		cout << "SIZE: " << listOfPlayers.size() << endl; 
+		checkPlayersHealth();
+
+		cout << "SIZE: " << listOfPlayers.size();
+
 		roundcounter++; 
 		break;
-	}
-
-	
+	}	
 }
 
 GameManager* GameManager::getInstance()
@@ -153,8 +157,25 @@ void GameManager::perfomeAction(PlayerCharacter& player)
 
 	case 2: player.dodge(); 
 		break;
+	}
+
+}
 
 
+void GameManager::checkPlayersHealth(){
+	
+	int index = 0;
+	
+	for (auto player : listOfPlayers)
+	{
+		if (player->m_hitpoints < 5)
+		{
+		  cout << player->getName() << " has " << player->m_hitpoints << " health points and is now DEAD!" << endl;
+		  //TODO DELETE A PLAYER WHEN ITS DEAD, Line of code under is wrong.
+		  listOfPlayers.erase(listOfPlayers.begin() + index); 
+		}
+
+		index++;
 	}
 
 }

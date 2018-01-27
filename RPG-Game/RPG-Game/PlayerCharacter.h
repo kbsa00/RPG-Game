@@ -23,7 +23,7 @@ public:
 
 	//Getters and setters
 	int getAttacks();
-	int gethp(); 
+    int gethp(); 
 	RPG_role getType(); 
 	string getName(); 
 	int m_hitpoints;

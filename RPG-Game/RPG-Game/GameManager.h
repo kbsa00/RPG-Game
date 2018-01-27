@@ -17,7 +17,8 @@ public:
 	void run();
 	GameManager * getInstance();
 	void pickEnemy(PlayerCharacter & player);
-	void perfomeAction(PlayerCharacter& player); 
+	void perfomeAction(PlayerCharacter& player);
+	void checkPlayersHealth();
 private:
 	vector<shared_ptr<PlayerCharacter>> listOfPlayers; 
 
