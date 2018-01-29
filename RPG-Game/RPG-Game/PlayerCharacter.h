@@ -8,7 +8,8 @@ enum RPG_role
 	Wizard,
 	Troll,
 	Assasin,
-	Hobbit
+	Hobbit, 
+	Elf
 };
 
 class PlayerCharacter
@@ -17,7 +18,7 @@ class PlayerCharacter
 public:
 	PlayerCharacter(int hitpoints, int attacks, string name, RPG_role type); 
 	~PlayerCharacter(); 
-	void dodge(); 
+	void dodge(PlayerCharacter & target, PlayerCharacter & attacker); 
 	void attack(PlayerCharacter & target, PlayerCharacter & attacker);
 	
 

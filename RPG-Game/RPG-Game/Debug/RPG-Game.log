@@ -1,10 +1,4 @@
-﻿  PlayerCharacter.cpp
-  GameManager.cpp
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(164): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(63): warning C4715: 'GameManager::pickRPG': not all control paths return a value
-  Skipping... (no relevant changes detected)
-  RPG-Game.cpp
-  PlayerCharacterView.cpp
-  Factory.cpp
+﻿  GameManager.cpp
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(169): warning C4018: '<': signed/unsigned mismatch
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(66): warning C4715: 'GameManager::pickRPG': not all control paths return a value
   RPG-Game.vcxproj -> C:\Users\Eier\Desktop\GitHub\RPG-Game\RPG-Game\Debug\RPG-Game.exe

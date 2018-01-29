@@ -6,19 +6,42 @@ PlayerCharacterView::~PlayerCharacterView()
 {
 }
 
-void PlayerCharacterView::promptaction(PlayerCharacter & player)
+void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharacter & target)
 {
-	switch (player.getType())
+	switch (attacker.getType())
 	{
-	case Wizard: 
-		cout << player.getName() << " attacked  for 25 Damage" << endl; 
-		
+	case Wizard:
+
+		if(target.getDecision() == 2)
+		{
+			cout << target.getName() << " Dodged the attack from " << target.getName() << endl; 
+		}
+		else
+		{
+			cout << attacker.getName() << " attacked " << target.getName() << " for 25 Damage" << endl;
+		}
+		 
 		break;
 
-	case Assasin: 
-		cout << player.getName() << " attacked for 50 Damage" << endl;
+	case Assasin:
 
+		if (target.getDecision() == 2)
+		{
+			cout << target.getName() << " Dodged the attack from " << target.getName() << endl; 
+		}
+		else
+		{
+			cout << attacker.getName() << " attacked " << target.getName() << " for 50 Damage" << endl;
+		}
+		
+		break;
 	}
+}
+
+void PlayerCharacterView::promptDodge(PlayerCharacter& player, PlayerCharacter& target)
+{
+	
+
 }
 
 void PlayerCharacterView::printStatus(PlayerCharacter & player)

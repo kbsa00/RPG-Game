@@ -56,8 +56,11 @@ RPG_role GameManager::pickRPG(int id)
 	{
 	case 1: return Wizard; 
 	
-	case 2: return Assasin; 
+	case 2: return Assasin;
 
+	case 3: return Hobbit;
+
+	case 4: return Elf;
 	}
 	
 }
@@ -65,7 +68,7 @@ RPG_role GameManager::pickRPG(int id)
 void GameManager::run()
 {
 	PlayerCharacterView pcw; 
-
+	bool condition = true;
 	int roundcounter = 1;
 	int attackChoice; 
 
@@ -73,8 +76,7 @@ void GameManager::run()
 	{
 		cout << players->getName() << " is now ready for the war!" << endl; 
 	}
-
-	bool condition; 
+ 
 	
 	while (condition)
 	{
@@ -119,8 +121,9 @@ void GameManager::run()
 
 		checkPlayersHealth();
 
+		condition = checkforWinner(); 
 		roundcounter++; 
-		break;
+		
 	}	
 }
 
@@ -154,7 +157,7 @@ void GameManager::perfomeAction(PlayerCharacter& player)
 	case 1: player.attack(*listOfPlayers[player.getPickedAttacker()], player); 
 		break;
 
-	case 2: player.dodge(); 
+	case 2: player.dodge(*listOfPlayers[player.getPickedAttacker()], player); 
 		break;
 	}
 
@@ -176,12 +179,8 @@ void GameManager::checkPlayersHealth(){
 
 bool GameManager::checkforWinner()
 {
-	
-	
+	bool condition = (listOfPlayers.size() == 1) ? true : false;
 
+	return condition; 
 
 }
-
-	
-
-

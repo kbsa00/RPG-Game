@@ -14,9 +14,9 @@ PlayerCharacter::~PlayerCharacter()
 	cout << "DESTROYED OBJECT, NAME: " << m_name;
 }
 
-void PlayerCharacter::dodge()
+void PlayerCharacter::dodge(PlayerCharacter & attacker, PlayerCharacter & target)
 {
-
+	
 
 }
 
@@ -25,15 +25,21 @@ void PlayerCharacter::attack(PlayerCharacter & target, PlayerCharacter & attacke
 	
 	switch (attacker.getType())
 	{
-	case Wizard: 
-		target.m_hitpoints -= 25;
-		attacker.m_attacks -= 25; 
-		pcw.promptaction(attacker); 
+	case Wizard:
+		if (target.getDecision() == 2)
+		{
+			pcw.promptaction(attacker, target); 
+		}else
+		{
+			target.m_hitpoints -= 25;
+			attacker.m_attacks -= 25;
+			pcw.promptaction(attacker, target);
+		}
 		break;
 	
 	case Assasin: target.m_hitpoints -= 50;
 		attacker.m_attacks -= 25;
-		pcw.promptaction(attacker);
+		pcw.promptaction(attacker, target);
 		break;
 	}
 }
