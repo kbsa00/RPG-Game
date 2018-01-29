@@ -3,7 +3,7 @@
 #include "PlayerCharacterView.h"
 #include <iostream>
 
-PlayerCharacter::PlayerCharacter(int hitpoints, int attack, string name, RPG_role type) : m_hitpoints(hitpoints), 
+PlayerCharacter::PlayerCharacter(int healthpoints, int attack, string name, RPG_role type) : m_healthpoints(healthpoints), 
 m_attacks(attack), m_name(name), m_type(type)
 {
 
@@ -11,16 +11,12 @@ m_attacks(attack), m_name(name), m_type(type)
 
 PlayerCharacter::~PlayerCharacter()
 {
-	cout << "DESTROYED OBJECT, NAME: " << m_name;
+	cout << "\nPlayer name "<< m_name << " IS NOW DEAD"<< endl;
 }
 
-void PlayerCharacter::dodge(PlayerCharacter & attacker, PlayerCharacter & target)
-{
-	
 
-}
 
-void PlayerCharacter::attack(PlayerCharacter & target, PlayerCharacter & attacker){
+void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacker){
 	PlayerCharacterView pcw;
 	
 	switch (attacker.getType())
@@ -31,15 +27,66 @@ void PlayerCharacter::attack(PlayerCharacter & target, PlayerCharacter & attacke
 			pcw.promptaction(attacker, target); 
 		}else
 		{
-			target.m_hitpoints -= 25;
-			attacker.m_attacks -= 25;
+			target.m_healthpoints -= 124;
+			attacker.m_attacks -= 85;
 			pcw.promptaction(attacker, target);
 		}
 		break;
 	
-	case Assasin: target.m_hitpoints -= 50;
-		attacker.m_attacks -= 25;
-		pcw.promptaction(attacker, target);
+	case Assasin:
+		
+		if (target.getDecision() == 2)
+		{
+			pcw.promptaction(attacker, target);
+		}
+		else
+		{
+			target.m_healthpoints -= 170;
+			attacker.m_attacks -= 90;
+			pcw.promptaction(attacker, target);
+		}
+		break;
+
+	case Troll:
+		if(target.getDecision() == 2)
+		{
+			pcw.promptaction(attacker, target);
+		}
+		else
+		{
+			target.m_healthpoints -= 200;
+			attacker.m_attacks -= 125;
+			pcw.promptaction(attacker, target);
+		}
+
+		break;
+
+	case Elf:
+		if (target.getDecision() == 2)
+		{
+			pcw.promptaction(attacker, target);
+		}
+		else
+		{
+			target.m_healthpoints -= 170;
+			attacker.m_attacks -= 100;
+			pcw.promptaction(attacker, target);
+		}
+
+		break;
+
+	case Hobbit:
+		if (target.getDecision())
+		{
+			pcw.promptaction(attacker, target);
+		}
+		else
+		{
+			target.m_healthpoints -= 130;
+			attacker.m_attacks -= 90;
+			pcw.promptaction(attacker, target);
+		}
+
 		break;
 	}
 }
@@ -52,7 +99,7 @@ int PlayerCharacter::getAttacks()
 
  int PlayerCharacter::gethp()
 {
-	return m_hitpoints; 
+	return m_healthpoints; 
 }
 
 RPG_role PlayerCharacter::getType()

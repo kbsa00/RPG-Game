@@ -34,7 +34,7 @@ void GameManager::startGame()
 
 	
 	for (int i = 0; i < num; i++){
-		cout << "Player Classes:\n1 - Wizard\n2 - Assasin" << endl; 
+		cout << "Player Classes:\n1 - Wizard\n2 - Assasin\n3 - Hobbit\n4 - Hobbit\n5 - Troll " << endl; 
 		cout << "Pick your player";
 		cin >> idRPG; 
 		RPG_role type = pickRPG(idRPG); 
@@ -61,13 +61,15 @@ RPG_role GameManager::pickRPG(int id)
 	case 3: return Hobbit;
 
 	case 4: return Elf;
+
+	case 5: return Troll;
 	}
 	
 }
 
 void GameManager::run()
 {
-	PlayerCharacterView pcw; 
+	
 	bool condition = true;
 	int roundcounter = 1;
 	int attackChoice; 
@@ -78,22 +80,16 @@ void GameManager::run()
 	}
  
 	
-	while (condition)
+	while (true)
 	{
-		
 		int decision = 0; 
-		cout << "\nRound " << roundcounter << " - " << "player stats" << endl; 
+		cout << "\n##Round " << roundcounter << " - " << "of the game" << "###" << endl; 
 
-		for (auto player : listOfPlayers)
-		{
-			pcw.printStatus(*player);
-
-		}
-		
+		playersStatus();
 	
 		for (auto player : listOfPlayers)
 		{
-			cout << player->getName() << " Pick your Action" << endl; 
+			cout << "\n"<< player->getName() << " Pick your Action" << endl; 
 			cout << "Actions:\n1 - Attack\n2 - Dodge" << endl; 
 			cin >> decision; 
 			player->setDecision(decision); 	
@@ -101,27 +97,26 @@ void GameManager::run()
 
 		for (auto player : listOfPlayers)
 		{
-			cout << player->getName() << " - Pick your target" << endl; 
-			pickEnemy(*player);
-			cout << "Write your targets number: "; 
-			cin >> attackChoice; 
-			player->setPickedAttacker(attackChoice); 
+			if (player->getDecision() != 2)
+			{
+				cout << player->getName() << " - Pick your target" << endl;
+				pickEnemy(*player);
+				cout << "Write your targets number: ";
+				cin >> attackChoice;
+				player->setPickedAttacker(attackChoice);
+			}
+			
 		}
 		
-		for (auto player : listOfPlayers)
-		{
-			perfomeAction(*player);
-		}
-		
-		for (auto player : listOfPlayers)
-		{
-			pcw.printStatus(*player);
-
-		}
-
+		perfomeAction();
+		playersStatus();
 		checkPlayersHealth();
 
-		condition = checkforWinner(); 
+		if (listOfPlayers.size() == 1)
+		{
+			cout << "WINNER WINNER CHICKEN DINNER: " << listOfPlayers.at(0)->getName() << endl;
+			break;
+		}
 		roundcounter++; 
 		
 	}	
@@ -150,17 +145,12 @@ void GameManager::pickEnemy(PlayerCharacter & player)
 	}
 }
 
-void GameManager::perfomeAction(PlayerCharacter& player)
+void GameManager::perfomeAction()
 {
-	switch (player.getDecision())
+	for (auto player : listOfPlayers)
 	{
-	case 1: player.attack(*listOfPlayers[player.getPickedAttacker()], player); 
-		break;
-
-	case 2: player.dodge(*listOfPlayers[player.getPickedAttacker()], player); 
-		break;
+		player->action(*listOfPlayers[player->getPickedAttacker()], *player); 
 	}
-
 }
 
 
@@ -168,7 +158,7 @@ void GameManager::checkPlayersHealth(){
 	
 	for (int i = 0; i < listOfPlayers.size(); i++)
 	{
-		if (listOfPlayers.at(i)->m_hitpoints < 5)
+		if (listOfPlayers.at(i)->m_healthpoints < 5)
 		{
 			listOfPlayers.erase(listOfPlayers.begin()+i); 
 			
@@ -179,8 +169,16 @@ void GameManager::checkPlayersHealth(){
 
 bool GameManager::checkforWinner()
 {
-	bool condition = (listOfPlayers.size() == 1) ? true : false;
+	bool condition;
+	return condition = (listOfPlayers.size() == 1) ? true : false;
+}
 
-	return condition; 
-
+void GameManager::playersStatus()
+{
+	PlayerCharacterView pcw; 
+	cout << "Player Status" << endl;
+	for (auto player : listOfPlayers)
+	{
+		pcw.printStatus(*player);
+	}
 }

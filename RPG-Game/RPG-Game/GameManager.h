@@ -17,9 +17,10 @@ public:
 	void run();
 	GameManager * getInstance();
 	void pickEnemy(PlayerCharacter & player);
-	void perfomeAction(PlayerCharacter& player);
+	void perfomeAction();
 	void checkPlayersHealth();
 	bool checkforWinner();
+	void playersStatus();
 private:
 	vector<shared_ptr<PlayerCharacter>> listOfPlayers; 
 

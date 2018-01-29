@@ -6,10 +6,10 @@ using namespace std;
 enum RPG_role
 {
 	Wizard,
-	Troll,
 	Assasin,
 	Hobbit, 
-	Elf
+	Elf,
+	Troll
 };
 
 class PlayerCharacter
@@ -19,7 +19,7 @@ public:
 	PlayerCharacter(int hitpoints, int attacks, string name, RPG_role type); 
 	~PlayerCharacter(); 
 	void dodge(PlayerCharacter & target, PlayerCharacter & attacker); 
-	void attack(PlayerCharacter & target, PlayerCharacter & attacker);
+	void action(PlayerCharacter & target, PlayerCharacter & attacker);
 	
 
 	//Getters and setters
@@ -27,7 +27,7 @@ public:
     int gethp(); 
 	RPG_role getType(); 
 	string getName(); 
-	int m_hitpoints;
+	int m_healthpoints;
 	void setDecision(int decision); 
 	int getDecision();
 	int getPickedAttacker();
