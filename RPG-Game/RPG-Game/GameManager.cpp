@@ -74,9 +74,11 @@ void GameManager::run()
 		cout << players->getName() << " is now ready for the war!" << endl; 
 	}
 
+	bool condition; 
 	
-	while (true)
+	while (condition)
 	{
+		
 		int decision = 0; 
 		cout << "\nRound " << roundcounter << " - " << "player stats" << endl; 
 
@@ -115,10 +117,7 @@ void GameManager::run()
 
 		}
 
-		cout << "SIZE: " << listOfPlayers.size() << endl; 
 		checkPlayersHealth();
-
-		cout << "SIZE: " << listOfPlayers.size();
 
 		roundcounter++; 
 		break;
@@ -152,7 +151,7 @@ void GameManager::perfomeAction(PlayerCharacter& player)
 {
 	switch (player.getDecision())
 	{
-	case 1: player.attack(listOfPlayers[player.getPickedAttacker()]->m_hitpoints, player); 
+	case 1: player.attack(*listOfPlayers[player.getPickedAttacker()], player); 
 		break;
 
 	case 2: player.dodge(); 
@@ -164,19 +163,25 @@ void GameManager::perfomeAction(PlayerCharacter& player)
 
 void GameManager::checkPlayersHealth(){
 	
-	int index = 0;
-	
-	for (auto player : listOfPlayers)
+	for (int i = 0; i < listOfPlayers.size(); i++)
 	{
-		if (player->m_hitpoints < 5)
+		if (listOfPlayers.at(i)->m_hitpoints < 5)
 		{
-		  cout << player->getName() << " has " << player->m_hitpoints << " health points and is now DEAD!" << endl;
-		  //TODO DELETE A PLAYER WHEN ITS DEAD, Line of code under is wrong.
-		  listOfPlayers.erase(listOfPlayers.begin() + index); 
+			listOfPlayers.erase(listOfPlayers.begin()+i); 
+			
 		}
-
-		index++;
 	}
+}
+
+
+bool GameManager::checkforWinner()
+{
+	
+	
+
 
 }
+
+	
+
 

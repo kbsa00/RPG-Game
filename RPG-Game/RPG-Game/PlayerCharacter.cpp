@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
 #include "PlayerCharacter.h"
 #include "PlayerCharacterView.h"
+#include <iostream>
 
 PlayerCharacter::PlayerCharacter(int hitpoints, int attack, string name, RPG_role type) : m_hitpoints(hitpoints), 
 m_attacks(attack), m_name(name), m_type(type)
@@ -10,7 +11,7 @@ m_attacks(attack), m_name(name), m_type(type)
 
 PlayerCharacter::~PlayerCharacter()
 {
-
+	cout << "DESTROYED OBJECT, NAME: " << m_name;
 }
 
 void PlayerCharacter::dodge()
@@ -19,21 +20,20 @@ void PlayerCharacter::dodge()
 
 }
 
-void PlayerCharacter::attack(int &enemy_hp, PlayerCharacter & object){
+void PlayerCharacter::attack(PlayerCharacter & target, PlayerCharacter & attacker){
 	PlayerCharacterView pcw;
 	
-	switch (object.getType())
+	switch (attacker.getType())
 	{
 	case Wizard: 
-		
-		enemy_hp -= 25;
-		object.m_attacks -= 25; 
-		pcw.promptaction(object); 
+		target.m_hitpoints -= 25;
+		attacker.m_attacks -= 25; 
+		pcw.promptaction(attacker); 
 		break;
 	
-	case Assasin: enemy_hp -= 50;
-		object.m_attacks -= 25;
-		pcw.promptaction(object);
+	case Assasin: target.m_hitpoints -= 50;
+		attacker.m_attacks -= 25;
+		pcw.promptaction(attacker);
 		break;
 	}
 }

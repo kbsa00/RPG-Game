@@ -18,7 +18,7 @@ public:
 	PlayerCharacter(int hitpoints, int attacks, string name, RPG_role type); 
 	~PlayerCharacter(); 
 	void dodge(); 
-	void attack(int & enemy_hp, PlayerCharacter & object);
+	void attack(PlayerCharacter & target, PlayerCharacter & attacker);
 	
 
 	//Getters and setters

@@ -19,6 +19,7 @@ public:
 	void pickEnemy(PlayerCharacter & player);
 	void perfomeAction(PlayerCharacter& player);
 	void checkPlayersHealth();
+	bool checkforWinner();
 private:
 	vector<shared_ptr<PlayerCharacter>> listOfPlayers; 
 
