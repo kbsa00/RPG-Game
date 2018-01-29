@@ -19,7 +19,7 @@ public:
 	void pickEnemy(PlayerCharacter & player);
 	void perfomeAction();
 	void checkPlayersHealth();
-	bool checkforWinner();
+	void powerUp(); 
 	void playersStatus();
 private:
 	vector<shared_ptr<PlayerCharacter>> listOfPlayers; 

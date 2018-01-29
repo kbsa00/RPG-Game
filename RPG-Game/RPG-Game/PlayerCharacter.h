@@ -32,6 +32,7 @@ public:
 	int getDecision();
 	int getPickedAttacker();
 	void setPickedAttacker(int pickAttacker); 
+	void setAttack(int attacks);
 
 private:
 	string m_name; 

@@ -48,6 +48,7 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 		break;
 
 	case Troll:
+		
 		if(target.getDecision() == 2)
 		{
 			pcw.promptaction(attacker, target);
@@ -62,13 +63,14 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 		break;
 
 	case Elf:
+		
 		if (target.getDecision() == 2)
 		{
 			pcw.promptaction(attacker, target);
 		}
 		else
 		{
-			target.m_healthpoints -= 170;
+			target.m_healthpoints -= 160;
 			attacker.m_attacks -= 100;
 			pcw.promptaction(attacker, target);
 		}
@@ -130,5 +132,10 @@ int PlayerCharacter::getPickedAttacker()
 void PlayerCharacter::setPickedAttacker(int pickAttacker)
 {
 	m_pickAttacker = pickAttacker; 
+}
+
+void PlayerCharacter::setAttack(int attacks)
+{
+	m_attacks = attacks;
 }
 

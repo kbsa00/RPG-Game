@@ -34,7 +34,7 @@ void GameManager::startGame()
 
 	
 	for (int i = 0; i < num; i++){
-		cout << "Player Classes:\n1 - Wizard\n2 - Assasin\n3 - Hobbit\n4 - Hobbit\n5 - Troll " << endl; 
+		cout << "Player Classes:\n1 - Wizard\n2 - Assasin\n3 - Hobbit\n4 - Elf\n5 - Troll " << endl; 
 		cout << "Pick your player";
 		cin >> idRPG; 
 		RPG_role type = pickRPG(idRPG); 
@@ -109,7 +109,6 @@ void GameManager::run()
 		}
 		
 		perfomeAction();
-		playersStatus();
 		checkPlayersHealth();
 
 		if (listOfPlayers.size() == 1)
@@ -117,6 +116,7 @@ void GameManager::run()
 			cout << "WINNER WINNER CHICKEN DINNER: " << listOfPlayers.at(0)->getName() << endl;
 			break;
 		}
+
 		roundcounter++; 
 		
 	}	
@@ -166,17 +166,23 @@ void GameManager::checkPlayersHealth(){
 	}
 }
 
-
-bool GameManager::checkforWinner()
+void GameManager::powerUp()
 {
-	bool condition;
-	return condition = (listOfPlayers.size() == 1) ? true : false;
+	for (auto player : listOfPlayers)
+	{
+		if (player->getAttacks() < 50)
+		{
+			player->setAttack(200);
+		}
+	}
+
 }
+
 
 void GameManager::playersStatus()
 {
 	PlayerCharacterView pcw; 
-	cout << "Player Status" << endl;
+	cout << "###-------Player Status------###" << endl;
 	for (auto player : listOfPlayers)
 	{
 		pcw.printStatus(*player);

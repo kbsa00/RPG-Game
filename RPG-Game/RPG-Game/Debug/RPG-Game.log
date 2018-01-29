@@ -1,4 +1,4 @@
-﻿  GameManager.cpp
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(159): warning C4018: '<': signed/unsigned mismatch
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(68): warning C4715: 'GameManager::pickRPG': not all control paths return a value
+﻿  PlayerCharacterView.cpp
+  PlayerCharacter.cpp
+  Generating Code...
   RPG-Game.vcxproj -> C:\Users\Eier\Desktop\GitHub\RPG-Game\RPG-Game\Debug\RPG-Game.exe

@@ -9,9 +9,10 @@ PlayerCharacterView::~PlayerCharacterView()
 
 void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharacter & target)
 {
-	switch (attacker.getType())
-	{
-	case Wizard:
+	
+	switch (attacker.getType()){
+
+		case Wizard:
 
 		if (target.getDecision() == 2)
 		{
@@ -65,7 +66,7 @@ void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharact
 		}
 		else
 		{
-			cout << attacker.getName() << " attacked " << target.getName() << " for 170 Damage" << endl;
+			cout << attacker.getName() << " attacked " << target.getName() << " for 160 Damage" << endl;
 		}
 		break;
 	}
