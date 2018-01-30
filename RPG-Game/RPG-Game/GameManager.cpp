@@ -41,7 +41,7 @@ void GameManager::startGame()
 		cout << "Name of the player: " << i + 1 << " "; 
 		cin >> name; 
 		
-		listOfPlayers.push_back(factory.createObject(type, name));
+		listOfPlayers.push_back(factory.createObject(type, name, i));
 		cout << endl; 
 	}
 
@@ -108,12 +108,12 @@ void GameManager::run()
 			
 		}
 		
-		perfomeAction();
+		performAction();
 		checkPlayersHealth();
 
 		if (listOfPlayers.size() == 1)
 		{
-			cout << "WINNER WINNER CHICKEN DINNER: " << listOfPlayers.at(0)->getName() << endl;
+			cout << "WINNER WINNER CHICKEN DINNER: " << listOfPlayers.at(0)->getName() << " PLAYER-ID: " << listOfPlayers.at(0)->getPlayerID() << endl;
 			break;
 		}
 
@@ -145,7 +145,7 @@ void GameManager::pickEnemy(PlayerCharacter & player)
 	}
 }
 
-void GameManager::perfomeAction()
+void GameManager::performAction()
 {
 	for (auto player : listOfPlayers)
 	{

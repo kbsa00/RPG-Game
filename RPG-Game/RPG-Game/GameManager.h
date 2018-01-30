@@ -17,7 +17,7 @@ public:
 	void run();
 	GameManager * getInstance();
 	void pickEnemy(PlayerCharacter & player);
-	void perfomeAction();
+	void performAction();
 	void checkPlayersHealth();
 	void powerUp(); 
 	void playersStatus();

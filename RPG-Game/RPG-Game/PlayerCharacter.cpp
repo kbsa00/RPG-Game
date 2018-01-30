@@ -3,8 +3,8 @@
 #include "PlayerCharacterView.h"
 #include <iostream>
 
-PlayerCharacter::PlayerCharacter(int healthpoints, int attack, string name, RPG_role type) : m_healthpoints(healthpoints), 
-m_attacks(attack), m_name(name), m_type(type)
+PlayerCharacter::PlayerCharacter(int healthpoints, int attack, string name, RPG_role type, int playerID) : m_healthpoints(healthpoints), 
+m_attacks(attack), m_name(name), m_type(type), m_playerID(playerID)
 {
 
 }
@@ -137,5 +137,10 @@ void PlayerCharacter::setPickedAttacker(int pickAttacker)
 void PlayerCharacter::setAttack(int attacks)
 {
 	m_attacks = attacks;
+}
+
+int PlayerCharacter::getPlayerID()
+{
+	return m_playerID; 
 }
 
