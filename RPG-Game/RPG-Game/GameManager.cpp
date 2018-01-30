@@ -108,7 +108,7 @@ void GameManager::run()
 			
 		}
 		
-		performAction();
+		performAction(); 
 		checkPlayersHealth();
 
 		if (listOfPlayers.size() == 1)
@@ -158,7 +158,7 @@ void GameManager::checkPlayersHealth(){
 	
 	for (int i = 0; i < listOfPlayers.size(); i++)
 	{
-		if (listOfPlayers.at(i)->m_healthpoints < 5)
+		if (listOfPlayers.at(i)->getHealthPoint() < 5)
 		{
 			listOfPlayers.erase(listOfPlayers.begin()+i); 
 			
@@ -170,7 +170,7 @@ void GameManager::powerUp()
 {
 	for (auto player : listOfPlayers)
 	{
-		if (player->getAttacks() < 50)
+		if (player->getAttack() <= 50)
 		{
 			player->setAttack(200);
 		}

@@ -1,45 +1,32 @@
 ﻿#pragma once
 #include <string>
+#include "Character.h"
 
 using namespace std; 
 
-enum RPG_role
-{
-	Wizard,
-	Assasin,
-	Hobbit, 
-	Elf,
-	Troll
-};
 
-class PlayerCharacter
+class PlayerCharacter : public Character
 
 {
 public:
-	PlayerCharacter(int hitpoints, int attacks, string name, RPG_role type, int playerID); 
+	PlayerCharacter(int attacks, int healthpoints, string name, RPG_role type, int playerID); 
 	~PlayerCharacter(); 
-	void dodge(PlayerCharacter & target, PlayerCharacter & attacker); 
 	void action(PlayerCharacter & target, PlayerCharacter & attacker);
 	
 
 	//Getters and setters
-	int getAttacks();
-    int gethp(); 
-	RPG_role getType(); 
-	string getName(); 
-	int m_healthpoints;
-	void setDecision(int decision); 
 	int getDecision();
-	int getPickedAttacker();
-	void setPickedAttacker(int pickAttacker); 
-	void setAttack(int attacks);
-	int getPlayerID(); 
+	int getPlayerID();
+	int getPickedAttacker(); 
+
+	//Setters
+	void setDecision(int decision);
+	void setPickedAttacker(int pickAttacker);
 
 private:
-	string m_name; 
-	int m_attacks; 
+	
 	int m_decision;
 	int m_pickAttacker;
 	int m_playerID;
-	RPG_role m_type; 
+	
 };

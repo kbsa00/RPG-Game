@@ -75,7 +75,7 @@ void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharact
 
 void PlayerCharacterView::printStatus(PlayerCharacter & player)
 {
-	cout << player.getName() << " has now Attacks/Health " << player.getAttacks() << "/" << player.gethp() << endl; 
+	cout << player.getName() << " has now Attacks/Health " << player.getAttack() << "/" << player.getHealthPoint() << endl; 
 	
 
 }
