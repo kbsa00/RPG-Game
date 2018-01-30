@@ -151,6 +151,7 @@
     <ClInclude Include="Factory.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="NPCCharacter.h" />
+    <ClInclude Include="NPCCharacterView.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="PlayerCharacterView.h" />
     <ClInclude Include="stdafx.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="NPCCharacter.cpp" />
+    <ClCompile Include="NPCCharacterView.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="PlayerCharacterView.cpp" />
     <ClCompile Include="RPG-Game.cpp" />

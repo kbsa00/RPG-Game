@@ -1,4 +1,13 @@
-﻿  PlayerCharacter.cpp
-  Character.cpp
+﻿  PlayerCharacterView.cpp
+  PlayerCharacter.cpp
+  NPCCharacterView.cpp
+  NPCCharacter.cpp
   Generating Code...
+  Compiling...
+  Factory.cpp
+  Generating Code...
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\factory.cpp(30): warning C4715: 'Factory::createObject': not all control paths return a value
+  Skipping... (no relevant changes detected)
+  RPG-Game.cpp
+  GameManager.cpp
   RPG-Game.vcxproj -> C:\Users\Eier\Desktop\GitHub\RPG-Game\RPG-Game\Debug\RPG-Game.exe

@@ -13,61 +13,29 @@ void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharact
 	switch (attacker.getType()){
 
 		case Wizard:
-
-		if (target.getDecision() == 2)
-		{
-			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
-		}
-		else
-		{
-			cout << attacker.getName() << " attacked " << target.getName() << " for 124 Damage" << endl;
-		}
-
+		
+		cout << attacker.getName() << " attacked " << target.getName() << " for 124 Damage" << endl;
 		break;
 
 	case Assasin:
 
-		if (target.getDecision() == 2)
-		{
-			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
-		}
-		else
-		{
-			cout << attacker.getName() << " attacked " << target.getName() << " for 170 Damage" << endl;
-		}
+		cout << attacker.getName() << " attacked " << target.getName() << " for 170 Damage" << endl;
 		break;
 
 	case Troll:
-		if (target.getDecision() == 2)
-		{
-			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
-		}
-		else
-		{
-			cout << attacker.getName() << " attacked " << target.getName() << " for 200 Damage" << endl;
-		}
+	
+		cout << attacker.getName() << " attacked " << target.getName() << " for 200 Damage" << endl;
+		
 		break;
 
 	case Hobbit:
-		if (target.getDecision() == 2)
-		{
-			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
-		}
-		else
-		{
-			cout << attacker.getName() << " attacked " << target.getName() << " for 130 Damage" << endl;
-		}
-
-
+		
+		cout << attacker.getName() << " attacked " << target.getName() << " for 130 Damage" << endl;
+		
 	case Elf:
-		if (target.getDecision() == 2)
-		{
-			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
-		}
-		else
-		{
-			cout << attacker.getName() << " attacked " << target.getName() << " for 160 Damage" << endl;
-		}
+		
+		cout << attacker.getName() << " attacked " << target.getName() << " for 160 Damage" << endl;
+		
 		break;
 	}
 }
@@ -75,7 +43,7 @@ void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharact
 
 void PlayerCharacterView::printStatus(PlayerCharacter & player)
 {
-	cout << player.getName() << " has now Attacks/Health " << player.getAttack() << "/" << player.getHealthPoint() << endl; 
+	cout << player.getName() << " {"<< player.getPlayerID() << "} has now Attacks/Health " << player.getAttack() << "/" << player.getHealthPoint() << endl; 
 	
 
 }

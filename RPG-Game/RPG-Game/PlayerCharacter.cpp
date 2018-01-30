@@ -25,7 +25,7 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 	case Wizard:
 		if (target.getDecision() == 2)
 		{
-			pcw.promptaction(attacker, target); 
+			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
 		}else
 		{
 			health = target.getHealthPoint(); 
@@ -42,7 +42,7 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 		
 		if (target.getDecision() == 2)
 		{
-			pcw.promptaction(attacker, target);
+			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
 		}
 		else
 		{
@@ -60,7 +60,7 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 		
 		if(target.getDecision() == 2)
 		{
-			pcw.promptaction(attacker, target);
+			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
 		}
 		else
 		{
@@ -80,7 +80,7 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 		
 		if (target.getDecision() == 2)
 		{
-			pcw.promptaction(attacker, target);
+			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
 		}
 		else
 		{
@@ -98,7 +98,7 @@ void PlayerCharacter::action(PlayerCharacter & target, PlayerCharacter & attacke
 	case Hobbit:
 		if (target.getDecision())
 		{
-			pcw.promptaction(attacker, target);
+			cout << target.getName() << " Dodged the attack from " << attacker.getName() << endl;
 		}
 		else
 		{
