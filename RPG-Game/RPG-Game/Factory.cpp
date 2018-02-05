@@ -2,11 +2,13 @@
 #include "Factory.h"
 #include <memory>
 
-shared_ptr<PlayerCharacter>  Factory::createObject(RPG_role role, string name, int playerID)
+shared_ptr<Character>  Factory::createObject(RPG_role role, string name, int playerID)
 {
 	switch (role)
 	{
-	case Wizard: {  shared_ptr<PlayerCharacter> wizard(new PlayerCharacter(590, 450, name, Wizard, playerID));
+	case Wizard: {  
+			
+			shared_ptr<PlayerCharacter> wizard(new PlayerCharacter(590, 450, name, Wizard, playerID));
 		return wizard;
 	}
 

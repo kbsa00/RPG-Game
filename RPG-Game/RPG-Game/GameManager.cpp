@@ -132,7 +132,7 @@ GameManager* GameManager::getInstance()
 	return _instance; 
 }
 
-void GameManager::pickEnemy(PlayerCharacter & player)
+void GameManager::pickEnemy(Character & player)
 {
 	int index = 0; 
 	for (auto players : listOfPlayers)

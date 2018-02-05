@@ -16,13 +16,14 @@ public:
 	RPG_role pickRPG(int id);
 	void run();
 	GameManager * getInstance();
-	void pickEnemy(PlayerCharacter & player);
+	void pickEnemy(Character & player);
 	void performAction();
 	void checkPlayersHealth();
 	void powerUp(); 
 	void playersStatus();
+
 private:
-	vector<shared_ptr<PlayerCharacter>> listOfPlayers; 
+	vector<shared_ptr<Character>> listOfPlayers; 
 
 	
 };

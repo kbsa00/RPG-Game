@@ -5,7 +5,7 @@ class PlayerCharacterView
 {
 public:
 	~PlayerCharacterView(); 
-	void promptaction(PlayerCharacter & player, PlayerCharacter & target);
-	void printStatus(PlayerCharacter & player); 
+	void promptaction(Character & player, Character & target);
+	void printStatus(Character & player); 
 
 };

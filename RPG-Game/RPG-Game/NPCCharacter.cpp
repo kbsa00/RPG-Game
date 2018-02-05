@@ -1,35 +1,25 @@
 #include "stdafx.h"
 #include "NPCCharacter.h"
+#include <iostream>
 
 
-NPCCharacter::NPCCharacter(int attacks, int healthpoints, string name, RPG_role type) :
-	Character(attacks, healthpoints, name, type)
+NPCCharacter::NPCCharacter(int attacks, int healthpoints, string name, RPG_role type, int playerID) :
+	Character(attacks, healthpoints, name, type, playerID)
 {
+	m_race = false;
 }
 
 
 NPCCharacter::~NPCCharacter()
 {
+	cout << "Player name: " << getName() << " Player ID: " << getPlayerID() << " IS NOW DEAD " << endl; 
+
 }
 
-void NPCCharacter::setDecision(int decision)
-{
-	m_decision = decision;
-}
 
-void NPCCharacter::setPickedAttacker(int pickedAttacker)
+bool NPCCharacter::getRace()
 {
-	m_pickAttacker = pickedAttacker; 
-}
-
-int NPCCharacter::getDecision()
-{
-	return m_decision;
-}
-
-int NPCCharacter::getPickedAttacker()
-{
-	return m_pickAttacker;
+	return m_race;
 }
 
 

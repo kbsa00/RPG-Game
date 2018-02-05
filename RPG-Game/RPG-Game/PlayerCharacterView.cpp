@@ -7,7 +7,7 @@ PlayerCharacterView::~PlayerCharacterView()
 
 }
 
-void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharacter & target)
+void PlayerCharacterView::promptaction(Character & attacker, Character & target)
 {
 	
 	switch (attacker.getType()){
@@ -41,7 +41,7 @@ void PlayerCharacterView::promptaction(PlayerCharacter & attacker, PlayerCharact
 }
 
 
-void PlayerCharacterView::printStatus(PlayerCharacter & player)
+void PlayerCharacterView::printStatus(Character & player)
 {
 	cout << player.getName() << " {"<< player.getPlayerID() << "} has now Attacks/Health " << player.getAttack() << "/" << player.getHealthPoint() << endl; 
 	
