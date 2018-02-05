@@ -21,6 +21,7 @@ public:
 	void checkPlayersHealth();
 	void powerUp(); 
 	void playersStatus();
+	void initilizeRandom(); 
 
 private:
 	vector<shared_ptr<Character>> listOfPlayers; 

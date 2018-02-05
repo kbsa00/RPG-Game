@@ -23,7 +23,7 @@ void GameManager::startGame()
 	int idRPG;
 	char answer;
 	string npcName = "NPC";
-	srand(time(NULL)); 
+	
 
 	while (num < 2)
 	{
@@ -45,12 +45,15 @@ void GameManager::startGame()
 		cout << "Initializing " << npcNum << " players" << endl;
 		cout << "<------------------------->" << endl;
 		
+		initilizeRandom(); 
 		for (int i = 0; i < npcNum; i++){
-			npcNum = rand() % 5 + 1; 
-			RPG_role type = pickRPG(npcNum); 
+			
+			int npcPick = rand() % 5 + 1; 
+			RPG_role type = pickRPG(npcPick); 
 			npcName += to_string(i);
 			cout << "Name of the NPC player " << npcName << " is created" << endl;
 			listOfPlayers.push_back(factory.createObject(type, npcName, i+10, false));
+			 
 		}
 		
 	}
@@ -60,7 +63,6 @@ void GameManager::startGame()
 	}
 
 
-	
 	for (int i = 0; i < num; i++){
 		cout << "Player Classes:\n1 - Wizard\n2 - Assasin\n3 - Hobbit\n4 - Elf\n5 - Troll " << endl; 
 		cout << "Pick your player";
@@ -117,21 +119,25 @@ void GameManager::run()
 		cout << "\n##Round " << roundcounter << " - " << "of the game" << "###" << endl; 
 
 		playersStatus();
-		
+		powerUp();
+		initilizeRandom(); 
 
 		for (auto player : listOfPlayers)
 		{
 			cout << "\n"<< player->getName() << " Pick your Action" << endl; 
 			cout << "Actions:\n1 - Attack\n2 - Dodge" << endl;
 
-			if (player->getIsHuman() == true)
+			if (player->getIsHuman())
 			{
 				cin >> decision;
 				player->setDecision(decision);
 			}
 			else
 			{
-				player->setDecision(rand() % 2 + 1);
+				int npcDecision = rand() % 2 + 1; 
+				player->setDecision(npcDecision);
+				cout << player->getName() << " picked " << npcDecision << endl; 
+
 			}	
 		}
 
@@ -139,11 +145,12 @@ void GameManager::run()
 		{
 			if (player->getDecision() != 2)
 			{
-				cout << player->getName() << " - Pick your target" << endl;
-				pickEnemy(*player);
 				
 				if (player->getIsHuman() == true)
 				{
+					cout << player->getName() << " - Pick your target" << endl;
+					pickEnemy(*player);
+
 					cout << "Write your targets number: ";
 					cin >> attackChoice;
 					player->setPickedAttacker(attackChoice);
@@ -237,4 +244,9 @@ void GameManager::playersStatus()
 	{
 		pcw.printStatus(*player);
 	}
+}
+
+void GameManager::initilizeRandom()
+{
+	srand(time(NULL));
 }

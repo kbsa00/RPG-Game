@@ -1,6 +1,6 @@
 ﻿  GameManager.cpp
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(26): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(106): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(210): warning C4018: '<': signed/unsigned mismatch
-c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(98): warning C4715: 'GameManager::pickRPG': not all control paths return a value
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(107): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(216): warning C4018: '<': signed/unsigned mismatch
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(251): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\eier\desktop\github\rpg-game\rpg-game\rpg-game\gamemanager.cpp(99): warning C4715: 'GameManager::pickRPG': not all control paths return a value
   RPG-Game.vcxproj -> C:\Users\Eier\Desktop\GitHub\RPG-Game\RPG-Game\Debug\RPG-Game.exe
