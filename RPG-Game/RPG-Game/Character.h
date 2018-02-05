@@ -33,8 +33,7 @@ public:
 	void setDecision(int decision);
 	void setPickedAttacker(int pickedAttacker);
 
-	//Functions
-	void action(Character & target, Character & attacker);
+
 
 private:
 	int m_attacks;

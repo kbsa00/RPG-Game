@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Character.h" />
     <ClInclude Include="Factory.h" />
+    <ClInclude Include="GameLogic.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="NPCCharacter.h" />
     <ClInclude Include="NPCCharacterView.h" />
@@ -160,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Factory.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="NPCCharacter.cpp" />
     <ClCompile Include="NPCCharacterView.cpp" />

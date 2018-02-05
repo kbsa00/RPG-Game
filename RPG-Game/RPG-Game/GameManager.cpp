@@ -4,6 +4,7 @@
 #include "Factory.h"
 #include "PlayerCharacterView.h"
 #include <ctime>
+#include "GameLogic.h"
 
 
 GameManager * GameManager::_instance = 0; 
@@ -55,7 +56,6 @@ void GameManager::startGame()
 			listOfPlayers.push_back(factory.createObject(type, npcName, i+10, false));
 			 
 		}
-		
 	}
 	else
 	{
@@ -65,7 +65,7 @@ void GameManager::startGame()
 
 	for (int i = 0; i < num; i++){
 		cout << "Player Classes:\n1 - Wizard\n2 - Assasin\n3 - Hobbit\n4 - Elf\n5 - Troll " << endl; 
-		cout << "Pick your player";
+		cout << "Pick your player ";
 		cin >> idRPG; 
 		RPG_role type = pickRPG(idRPG); 
 		cout << "Name of the player: " << i + 1 << " "; 
@@ -95,7 +95,6 @@ RPG_role GameManager::pickRPG(int id)
 	case 5: return Troll;
 
 	}
-	
 }
 
 void GameManager::run()
@@ -146,7 +145,7 @@ void GameManager::run()
 			if (player->getDecision() != 2)
 			{
 				
-				if (player->getIsHuman() == true)
+				if (player->getIsHuman())
 				{
 					cout << player->getName() << " - Pick your target" << endl;
 					pickEnemy(*player);
@@ -157,7 +156,7 @@ void GameManager::run()
 				}
 				else
 				{
-					cout << "NPC is picking a target" << endl; 
+					cout << "NPC has picked a target" << endl; 
 					player->setPickedAttacker(rand() % listOfPlayers.size()-1);
 				}
 				
@@ -204,9 +203,14 @@ void GameManager::pickEnemy(Character & player)
 
 void GameManager::performAction()
 {
+	GameLogic gl; 
 	for (auto player : listOfPlayers)
 	{
-		player->action(*listOfPlayers[player->getPickedAttacker()], *player); 
+		if (player->getDecision() == 1)
+		{
+			gl.action(*listOfPlayers[player->getPickedAttacker()], *player);
+		}
+		 
 	}
 }
 
