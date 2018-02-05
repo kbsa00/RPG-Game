@@ -6,5 +6,5 @@
 class Factory
 {
 public:
-	 shared_ptr<Character> createObject(RPG_role role, string name, int playerID); 
+	 shared_ptr<Character> createObject(RPG_role role, string name, int playerID, bool IsHuman); 
 };

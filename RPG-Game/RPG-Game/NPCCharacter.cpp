@@ -3,10 +3,9 @@
 #include <iostream>
 
 
-NPCCharacter::NPCCharacter(int attacks, int healthpoints, string name, RPG_role type, int playerID) :
-	Character(attacks, healthpoints, name, type, playerID)
+NPCCharacter::NPCCharacter(int attacks, int healthpoints, string name, RPG_role type, int playerID, bool isHuman) :
+	Character(attacks, healthpoints, name, type, playerID, isHuman)
 {
-	m_race = false;
 }
 
 
@@ -14,12 +13,6 @@ NPCCharacter::~NPCCharacter()
 {
 	cout << "Player name: " << getName() << " Player ID: " << getPlayerID() << " IS NOW DEAD " << endl; 
 
-}
-
-
-bool NPCCharacter::getRace()
-{
-	return m_race;
 }
 
 

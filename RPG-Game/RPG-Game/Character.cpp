@@ -4,8 +4,8 @@
 #include "PlayerCharacterView.h"
 
 
-Character::Character(int attacks, int healthPoints, string name, RPG_role type, int playerID) :
-	m_attacks(attacks), m_healthPoints(healthPoints), m_name(name), m_type(type), m_playerID(playerID)
+Character::Character(int attacks, int healthPoints, string name, RPG_role type, int playerID, bool isHuman) :
+	m_attacks(attacks), m_healthPoints(healthPoints), m_name(name), m_type(type), m_playerID(playerID), m_isHuman(isHuman)
 {
 
 }
@@ -45,6 +45,10 @@ int Character::getPlayerID()
 	return m_playerID;
 }
 
+bool Character::getIsHuman()
+{
+	return m_isHuman;
+}
 
 void Character::setAttack(int attack)
 {

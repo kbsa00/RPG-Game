@@ -3,6 +3,7 @@
 #include <memory>
 #include "Factory.h"
 #include "PlayerCharacterView.h"
+#include <ctime>
 
 
 GameManager * GameManager::_instance = 0; 
@@ -17,20 +18,47 @@ void GameManager::startGame()
 {
 	Factory factory;
 	int num = 0;
+	int npcNum = 0;
 	string name;
 	int idRPG;
-	vector<string> nameList;
-
+	char answer;
+	string npcName = "NPC";
+	srand(time(NULL)); 
 
 	while (num < 2)
 	{
 		cout << "Please enter atleast two players or more.." << endl;
-		cout << "Enter number of players: ";
+		cout << "Enter number of players(Humans): ";
 		cin >> num;
 		cout << endl;
 		cout << "Initializing " << num << " players" << endl;
 		cout << "<------------------------->" << endl;
 	}
+	
+	cout << "Do you want to initlize NPC players?\ny for yes and n for no " << endl; 
+	cin >> answer;
+
+	if (answer == 'y')
+	{
+		cout << "Please enter how many NPC players you want to add " << endl;
+		cin >> npcNum;
+		cout << "Initializing " << npcNum << " players" << endl;
+		cout << "<------------------------->" << endl;
+		
+		for (int i = 0; i < npcNum; i++){
+			npcNum = rand() % 5 + 1; 
+			RPG_role type = pickRPG(npcNum); 
+			npcName += to_string(i);
+			cout << "Name of the NPC player " << npcName << " is created" << endl;
+			listOfPlayers.push_back(factory.createObject(type, npcName, i+10, false));
+		}
+		
+	}
+	else
+	{
+		cout << "You have decided not to play with NPC players" << endl; 
+	}
+
 
 	
 	for (int i = 0; i < num; i++){
@@ -41,7 +69,7 @@ void GameManager::startGame()
 		cout << "Name of the player: " << i + 1 << " "; 
 		cin >> name; 
 		
-		listOfPlayers.push_back(factory.createObject(type, name, i));
+		listOfPlayers.push_back(factory.createObject(type, name, i, true));
 		cout << endl; 
 	}
 
@@ -63,6 +91,7 @@ RPG_role GameManager::pickRPG(int id)
 	case 4: return Elf;
 
 	case 5: return Troll;
+
 	}
 	
 }
@@ -72,7 +101,8 @@ void GameManager::run()
 	
 	bool condition = true;
 	int roundcounter = 1;
-	int attackChoice; 
+	int attackChoice;
+	srand(time(NULL)); 
 
 	for (auto players : listOfPlayers)
 	{
@@ -82,17 +112,27 @@ void GameManager::run()
 	
 	while (true)
 	{
-		int decision = 0; 
+		int decision = 0;
+		 
 		cout << "\n##Round " << roundcounter << " - " << "of the game" << "###" << endl; 
 
 		playersStatus();
-	
+		
+
 		for (auto player : listOfPlayers)
 		{
 			cout << "\n"<< player->getName() << " Pick your Action" << endl; 
-			cout << "Actions:\n1 - Attack\n2 - Dodge" << endl; 
-			cin >> decision; 
-			player->setDecision(decision); 	
+			cout << "Actions:\n1 - Attack\n2 - Dodge" << endl;
+
+			if (player->getIsHuman() == true)
+			{
+				cin >> decision;
+				player->setDecision(decision);
+			}
+			else
+			{
+				player->setDecision(rand() % 2 + 1);
+			}	
 		}
 
 		for (auto player : listOfPlayers)
@@ -101,9 +141,19 @@ void GameManager::run()
 			{
 				cout << player->getName() << " - Pick your target" << endl;
 				pickEnemy(*player);
-				cout << "Write your targets number: ";
-				cin >> attackChoice;
-				player->setPickedAttacker(attackChoice);
+				
+				if (player->getIsHuman() == true)
+				{
+					cout << "Write your targets number: ";
+					cin >> attackChoice;
+					player->setPickedAttacker(attackChoice);
+				}
+				else
+				{
+					cout << "NPC is picking a target" << endl; 
+					player->setPickedAttacker(rand() % listOfPlayers.size()-1);
+				}
+				
 			}
 			
 		}

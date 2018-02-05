@@ -13,7 +13,7 @@ enum RPG_role
 class Character
 {
 public:
-	Character(int attacks, int healthPoints, string name, RPG_role type, int playerID);
+	Character(int attacks, int healthPoints, string name, RPG_role type, int playerID, bool isHuman);
 	~Character();
 
 	//Getters
@@ -24,6 +24,7 @@ public:
 	int getDecision();
 	int getPickedAttacker();
 	int getPlayerID();
+	bool getIsHuman();
 	
 
 	//Setters
@@ -43,6 +44,6 @@ private:
 	int m_healthPoints;
 	string m_name;
 	int m_playerID;
-	
+	int m_isHuman;
 
 };
